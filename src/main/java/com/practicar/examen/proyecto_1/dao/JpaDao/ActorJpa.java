@@ -1,6 +1,7 @@
 package com.practicar.examen.proyecto_1.dao.JpaDao;
 
 import com.practicar.examen.proyecto_1.dao.DaoActor;
+import com.practicar.examen.proyecto_1.dto.ActorDto;
 import com.practicar.examen.proyecto_1.modelo.Actor;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -33,6 +34,15 @@ public class ActorJpa implements DaoActor {
         TypedQuery<Actor> query = em.createQuery("SELECT a FROM Actor a where a.edad > :edad"
                 ,Actor.class);
         query.setParameter("edad",edad);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ActorDto> numActoresPorNacionalidad(String nacionalidad) {
+        TypedQuery<ActorDto> query = em.createQuery(
+                "SELECT new com.practicar.examen.proyecto_1.dto.ActorDto(a.nacionalidad,COUNT(a)) FROM Actor a WHERE a.nacionalidad=:nacionalidad GROUP BY a.nacionalidad"
+                , ActorDto.class);
+        query.setParameter("nacionalidad",nacionalidad);
         return query.getResultList();
     }
 }

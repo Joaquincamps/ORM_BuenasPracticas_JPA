@@ -3,6 +3,7 @@ package com.practicar.examen.proyecto_1.main;
 import com.practicar.examen.config.JpaUtil;
 import com.practicar.examen.proyecto_1.dao.JpaDao.ActorJpa;
 import com.practicar.examen.proyecto_1.dao.JpaDao.PeliculaJpa;
+import com.practicar.examen.proyecto_1.dto.ActorDto;
 import com.practicar.examen.proyecto_1.modelo.Actor;
 import com.practicar.examen.proyecto_1.modelo.Pelicula;
 import jakarta.persistence.EntityManager;
@@ -76,6 +77,12 @@ public class App1 {
             List<Pelicula> peliculasCienciaFiccion = peliculaJpa.sacarPeliculasCienciaFiccion();
             for(Pelicula pelicula : peliculasCienciaFiccion){
                 System.out.println(pelicula);
+            }
+
+            System.out.println("Mostrar numero de actores por nacionalidad específica");
+            List<ActorDto> actoresPorNacionalidadEspeci = actorJpa.numActoresPorNacionalidad("Estadounidense");
+            for(ActorDto actorDto : actoresPorNacionalidadEspeci){
+                System.out.println(actorDto);
             }
             em.getTransaction().commit();
         }catch (Exception e){
