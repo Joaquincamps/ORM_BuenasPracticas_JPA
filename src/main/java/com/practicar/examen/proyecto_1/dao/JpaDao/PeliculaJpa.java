@@ -26,4 +26,9 @@ public class PeliculaJpa implements DaoPelicula {
                 ,Pelicula.class);
         return query.getResultList();
     }
+
+    @Override
+    public List<Pelicula> sacarPeliculasCienciaFiccion() {
+
+    }
 }

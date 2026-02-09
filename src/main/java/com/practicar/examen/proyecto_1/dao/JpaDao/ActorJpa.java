@@ -27,4 +27,12 @@ public class ActorJpa implements DaoActor {
         //query.setParameter("Española",Actor.class);
         return query.getResultList();
     }
+
+    @Override
+    public List<Actor> listarActoresMayoresNum(int edad) {
+        TypedQuery<Actor> query = em.createQuery("SELECT a FROM Actor a where a.edad > :edad"
+                ,Actor.class);
+        query.setParameter("edad",edad);
+        return query.getResultList();
+    }
 }

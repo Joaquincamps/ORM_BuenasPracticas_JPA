@@ -10,4 +10,7 @@ public interface DaoPelicula {
     //2️⃣ Obtener todas las películas en las que participe el actor llamado “Leonardo DiCaprio”.
 
     List<Pelicula> obtenerPeliculaPorActor();
+
+    //Obtener todas las películas de ciencia ficción.
+    List<Pelicula> sacarPeliculasCienciaFiccion();
 }

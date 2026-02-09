@@ -65,6 +65,12 @@ public class App1 {
             for(Pelicula pelicula : peliculasDiCaptrio){
                 System.out.println(pelicula);
             }
+
+            System.out.println("Actores mayores de X");
+            List<Actor> acotoresMayoresDeX = actorJpa.listarActoresMayoresNum(50);
+            for (Actor actor: acotoresMayoresDeX){
+                System.out.println(actor);
+            }
             em.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();

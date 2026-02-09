@@ -9,4 +9,7 @@ public interface DaoActor {
     void crearActor(Actor actor);
 
     List<Actor> obtenerActoresSpain();
+
+//    Obtener todos los actores mayores de 50 años.
+    List<Actor> listarActoresMayoresNum(int edad);
 }
