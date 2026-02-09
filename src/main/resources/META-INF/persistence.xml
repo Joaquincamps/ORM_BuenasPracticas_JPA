@@ -7,10 +7,12 @@
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+        <class>com.practicar.examen.proyecto_1.modelo.Pelicula</class>
+        <class>com.practicar.examen.proyecto_1.modelo.Actor</class>
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/liga25_26"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/practicarexamenjpa"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="Gestion2023@"/>
 

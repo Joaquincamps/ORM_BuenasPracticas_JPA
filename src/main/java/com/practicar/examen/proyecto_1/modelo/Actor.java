@@ -27,6 +27,17 @@ public class Actor {
         this.edad = edad;
     }
 
+    //metodos helpers
+    public void agregarPelicula(Pelicula pelicula){
+        peliculas.add(pelicula);
+        pelicula.getActores().add(this);
+    }
+
+    public void eliminarPelicula(Pelicula pelicula){
+        peliculas.remove(pelicula);
+        pelicula.getActores().remove(this);
+    }
+
     public Long getId() {
         return id;
     }
@@ -74,7 +85,6 @@ public class Actor {
                 ", nombre='" + nombre + '\'' +
                 ", nacionalidad='" + nacionalidad + '\'' +
                 ", edad=" + edad +
-                ", peliculas=" + peliculas +
                 '}';
     }
 }

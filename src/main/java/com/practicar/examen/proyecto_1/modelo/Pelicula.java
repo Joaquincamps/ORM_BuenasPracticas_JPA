@@ -26,6 +26,16 @@ public class Pelicula {
     )
     private List<Actor> actores = new ArrayList<>();
 
+    //metodos helpers
+    public void agregarActor(Actor actor){
+        actores.add(actor);
+        actor.getPeliculas().add(this);
+    }
+
+    public void eliminarActor(Actor actor){
+        actor.getPeliculas().remove(this);
+    }
+
     public Pelicula() {
     }
 
