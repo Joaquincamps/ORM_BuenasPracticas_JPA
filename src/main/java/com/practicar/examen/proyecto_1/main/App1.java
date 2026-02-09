@@ -71,6 +71,12 @@ public class App1 {
             for (Actor actor: acotoresMayoresDeX){
                 System.out.println(actor);
             }
+
+            System.out.println("Peliculas de ciencia ficción");
+            List<Pelicula> peliculasCienciaFiccion = peliculaJpa.sacarPeliculasCienciaFiccion();
+            for(Pelicula pelicula : peliculasCienciaFiccion){
+                System.out.println(pelicula);
+            }
             em.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();
