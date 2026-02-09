@@ -29,6 +29,6 @@ public class PeliculaJpa implements DaoPelicula {
 
     @Override
     public List<Pelicula> sacarPeliculasCienciaFiccion() {
-
+        return null;
     }
 }
