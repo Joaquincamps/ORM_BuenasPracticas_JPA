@@ -3,6 +3,8 @@ package com.practicar.examen.proyecto_2.main;
 import com.practicar.examen.config.JpaUtil;
 import com.practicar.examen.proyecto_2.dao.daojpa.DepartamentoDaoJpa;
 import com.practicar.examen.proyecto_2.dao.daojpa.EmpleadoDaoJpa;
+import com.practicar.examen.proyecto_2.dto.DepartamentoDto;
+import com.practicar.examen.proyecto_2.dto.MediaSalarioDepartamentoDto;
 import com.practicar.examen.proyecto_2.modelo.Departamento;
 import com.practicar.examen.proyecto_2.modelo.Empleado;
 import jakarta.persistence.EntityManager;
@@ -12,11 +14,9 @@ import java.util.List;
 
 /**
  * Hello world!
- *
  */
-public class App 
-{
-    public static void main( String[] args ){
+public class App {
+    public static void main(String[] args) {
 
         try {
             EntityManagerFactory emf = JpaUtil.getEntityManagerFactory();
@@ -67,12 +67,29 @@ public class App
 
             System.out.println("Obtener todos los empleados de un departamento concreto.");
             List<Empleado> empleadosPorDepartamento = empleadoDaoJpa.listarEmpleadosDeDepartamento(2);
-            for(Empleado empleado : empleadosPorDepartamento){
+            for (Empleado empleado : empleadosPorDepartamento) {
                 System.out.println(empleado);
             }
 
+            System.out.println("Obtener los departamentos que tengan más de 3 empleados.");
+            List<DepartamentoDto> obtenerDepartamentoMax3Empleados = departamentoDaoJpa.numEmpleadosPorDepartamento();
+            for (DepartamentoDto dto : obtenerDepartamentoMax3Empleados) {
+                System.out.println(dto);
+            }
+
+            System.out.println("Obtener el salario medio de los empleados de cada departamento.");
+            List<MediaSalarioDepartamentoDto> mediaSalarioPorDepartamento = departamentoDaoJpa.obtenerEmpleadosMediaSalarioDepartamento();
+            for (MediaSalarioDepartamentoDto empleadoDto : mediaSalarioPorDepartamento) {
+                System.out.println(empleadoDto);
+            }
+
+            System.out.println("Sueldo empleado mayor a la media del departamento");
+            List<Empleado> empleadosMayorSueldoMediaDepartamento = empleadoDaoJpa.empleadosSueldoMayorAvgDepartamento();
+            for (Empleado empleado : empleadosMayorSueldoMediaDepartamento) {
+                System.out.println(empleado);
+            }
             em.getTransaction().commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

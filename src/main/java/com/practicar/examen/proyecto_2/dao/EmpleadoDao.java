@@ -1,5 +1,6 @@
 package com.practicar.examen.proyecto_2.dao;
 
+import com.practicar.examen.proyecto_2.dto.MediaSalarioDepartamentoDto;
 import com.practicar.examen.proyecto_2.modelo.Empleado;
 
 import java.util.List;
@@ -9,4 +10,10 @@ public interface EmpleadoDao {
     void crearEmpleado(Empleado empleado);
 
     List<Empleado> listarEmpleadosDeDepartamento(int departamento_id);
+
+
+
+    //Obtener los empleados cuyo salario sea mayor que la media de su departamento.
+
+    List<Empleado> empleadosSueldoMayorAvgDepartamento();
 }
