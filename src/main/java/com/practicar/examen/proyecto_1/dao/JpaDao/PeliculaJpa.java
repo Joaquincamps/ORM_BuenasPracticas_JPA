@@ -32,4 +32,11 @@ public class PeliculaJpa implements DaoPelicula {
         TypedQuery<Pelicula> query = em.createQuery("SELECT p FROM Pelicula p WHERE p.genero = 'Ciencia ficción'",Pelicula.class);
         return query.getResultList();
     }
+
+    @Override
+    public List<Pelicula> listarPeliculasPresupuestoX(int presupuesto) {
+        TypedQuery<Pelicula> query = em.createQuery("SELECT p FROM Pelicula p WHERE p.presupuesto =:presupuesto",Pelicula.class);
+        query.setParameter("presupuesto",presupuesto);
+        return query.getResultList();
+    }
 }

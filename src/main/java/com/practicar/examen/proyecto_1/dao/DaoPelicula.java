@@ -13,4 +13,7 @@ public interface DaoPelicula {
 
     //Obtener todas las películas de ciencia ficción.
     List<Pelicula> sacarPeliculasCienciaFiccion();
+
+    //Obtener todas las películas cuyo presupuesto sea mayor a 100_000_000.
+    List<Pelicula> listarPeliculasPresupuestoX(int presupuesto);
 }

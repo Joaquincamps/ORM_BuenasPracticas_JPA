@@ -84,6 +84,18 @@ public class App1 {
             for(ActorDto actorDto : actoresPorNacionalidadEspeci){
                 System.out.println(actorDto);
             }
+
+            System.out.println("Obtener todas las películas cuyo presupuesto sea mayor a 100_000_000.");
+            List<Pelicula> peliculasPresupuestoMayor = peliculaJpa.listarPeliculasPresupuestoX(1000);
+            for(Pelicula pelicula : peliculasPresupuestoMayor){
+                System.out.println(pelicula);
+            }
+
+            System.out.println("Listar todos los actores que hayan participado en la película “Inception”.");
+            List<Actor> actoresDeLaPeliculaInception = actorJpa.actoresParticipantesInception();
+            for(Actor actor: actoresDeLaPeliculaInception){
+                System.out.println(actor);
+            }
             em.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();

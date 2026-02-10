@@ -6,6 +6,7 @@ import com.practicar.examen.proyecto_1.modelo.Actor;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class ActorJpa implements DaoActor {
@@ -43,6 +44,12 @@ public class ActorJpa implements DaoActor {
                 "SELECT new com.practicar.examen.proyecto_1.dto.ActorDto(a.nacionalidad,COUNT(a)) FROM Actor a WHERE a.nacionalidad=:nacionalidad GROUP BY a.nacionalidad"
                 , ActorDto.class);
         query.setParameter("nacionalidad",nacionalidad);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Actor> actoresParticipantesInception() {
+        TypedQuery<Actor> query = em.createQuery("SELECT a FROM Actor a JOIN a.peliculas p WHERE  p.titulo = 'Inception'",Actor.class);
         return query.getResultList();
     }
 }

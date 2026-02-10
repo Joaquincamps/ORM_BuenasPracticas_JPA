@@ -17,4 +17,7 @@ public interface DaoActor {
     //5️⃣ Contar cuántos actores hay de nacionalidad “Española”.
 
     List<ActorDto> numActoresPorNacionalidad(String nacionalidad);
+
+    //Listar todos los actores que hayan participado en la película “Inception”.
+    List<Actor> actoresParticipantesInception();
 }
