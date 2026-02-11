@@ -5,6 +5,9 @@ import com.practicar.examen.datos.DatosHabitacion;
 import com.practicar.examen.datos.DatosHotel;
 import com.practicar.examen.proyecto_3.dao.jpa.HabitacionDaoJpa;
 import com.practicar.examen.proyecto_3.dao.jpa.HotelDaoJpa;
+import com.practicar.examen.proyecto_3.dto.HabitacionMediaPorHotel;
+import com.practicar.examen.proyecto_3.dto.HotelMaxHabitacion;
+import com.practicar.examen.proyecto_3.dto.NombreHotelNumeroHabitaciones;
 import com.practicar.examen.proyecto_3.modelo.Habitacion;
 import com.practicar.examen.proyecto_3.modelo.Hotel;
 import jakarta.persistence.EntityManager;
@@ -55,19 +58,21 @@ public class App {
             for (Hotel hotel : hotelDaoJpa.listarHotelesPorEstrellas(4)) {
                 System.out.println(hotel);
             }
-            /*
-            Listar todas las habitaciones de un hotel concreto, mostrando su número, tipo y precio por noche.
 
-Obtener el hotel con más habitaciones registradas.
+            HabitacionDaoJpa habitacionDaoJpa = new HabitacionDaoJpa(em);
 
-Calcular el precio medio de todas las habitaciones de un hotel específico.
+            for (Habitacion habitacion : habitacionDaoJpa.listarHabitacionPorHotelPrecioMax400(1)) {
+                System.out.println(habitacion);
+            }
 
-Listar los hoteles que tienen habitaciones de tipo “suite”.
+            System.out.println("Hotel con la media de precio por noche");
+            for (HabitacionMediaPorHotel habitacionMediaPorHotel : habitacionDaoJpa.mediaPrecioHabitacionPorHotel(1)) {
+                System.out.println(habitacionMediaPorHotel);
+            }
 
-Contar cuántas habitaciones tiene cada hotel y mostrar el nombre del hotel junto con el número de habitaciones.
-
-Mostrar los hoteles con un precio máximo de habitación inferior a un valor dado.
-             */
+            for(NombreHotelNumeroHabitaciones nombreHotelNumeroHabitaciones: hotelDaoJpa.nombreHotelNumHabitacion()){
+                System.out.println(nombreHotelNumeroHabitaciones);
+            }
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
