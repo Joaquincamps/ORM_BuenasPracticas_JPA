@@ -2,6 +2,8 @@ package com.practicar.examen.proyecto_4.ManyToMany.main;
 
 import com.practicar.examen.config.JpaUtil;
 import com.practicar.examen.proyecto_4.ManyToMany.dao.jpa.AlumnoDaoJpa;
+import com.practicar.examen.proyecto_4.ManyToMany.dao.jpa.AsignaturaDaoJpa;
+import com.practicar.examen.proyecto_4.ManyToMany.dto.AsignaturaNumAlumnos;
 import com.practicar.examen.proyecto_4.ManyToMany.modelo.Alumno;
 import com.practicar.examen.proyecto_4.ManyToMany.modelo.Asignatura;
 import jakarta.persistence.EntityManager;
@@ -26,13 +28,15 @@ public class App {
             Asignatura asig2 = new Asignatura("Bases de Datos", "1º DAM", 192);
 
             a1.asignarAsignatura(asig1);
+            a1.asignarAsignatura(asig2);
             a2.asignarAsignatura(asig2);
             a3.asignarAsignatura(asig1);
+            a4.asignarAsignatura(asig1);
             a4.asignarAsignatura(asig2);
-            a5.asignarAsignatura(asig1);
-            a6.asignarAsignatura(asig2);
+            a5.asignarAsignatura(asig2);
+            a6.asignarAsignatura(asig1);
             a7.asignarAsignatura(asig1);
-
+            a7.asignarAsignatura(asig2);
 
             em.getTransaction().begin();
             AlumnoDaoJpa alumnoDaoJpa = new AlumnoDaoJpa(em);
@@ -44,6 +48,26 @@ public class App {
             alumnoDaoJpa.crearAlumno(a6);
             alumnoDaoJpa.crearAlumno(a7);
 
+            AsignaturaDaoJpa asignaturaDaoJpa = new AsignaturaDaoJpa(em);
+            for (Asignatura asignatura : asignaturaDaoJpa.asignaturasDeAlumno(2)) {
+                System.out.println(asignatura);
+            }
+
+            for (Alumno alumno : alumnoDaoJpa.alumnosMatriculadosAsignatura(2)) {
+                System.out.println(alumno);
+            }
+
+            for (Alumno alumno : alumnoDaoJpa.alumnosMatriculadosEnCursoDeterminado("1º DAM")) {
+                System.out.println(alumno);
+            }
+
+            for (AsignaturaNumAlumnos asignaturaNumAlumnos : asignaturaDaoJpa.asignaturaJuntoNumAlu()) {
+                System.out.println(asignaturaNumAlumnos);
+            }
+
+            for (Alumno alumno : alumnoDaoJpa.alumnosMayoresDeAniosEnAsignatura(20, asig1.getNombre())) {
+                System.out.println(alumno);
+            }
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
