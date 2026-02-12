@@ -16,7 +16,7 @@ public class Equipo {
 
     private double presupuesto;
 
-    @OneToMany(mappedBy = "equipo", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "equipo", orphanRemoval = true)
     List<Jugador> jugadores = new ArrayList<>();
 
     //metodos helpers

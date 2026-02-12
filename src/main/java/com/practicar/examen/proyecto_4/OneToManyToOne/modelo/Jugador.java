@@ -13,7 +13,7 @@ public class Jugador {
 
     private int dorsal;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "equipo_id")
     private Equipo equipo;
 
